@@ -57,30 +57,6 @@ For each plot you should
 * Upload the PNG file on the Assignment submission page
 * Copy and paste the R code from the corresponding R file into the text box at the appropriate point in the peer assessment.
 
-In preparation we first ensure the data sets archive is downloaded and extracted.
-
-```{r setup,echo=FALSE}
-# Download archive file, if it does not exist
-archiveFile <- "NEI_data.zip"
-if(!file.exists(archiveFile)) {
-	archiveURL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
-	if(Sys.info()["sysname"] == "Darwin") {
-		download.file(url=archiveURL,destfile=archiveFile,method="curl")
-	} else {
-		download.file(url=url,destfile=archiveFile)
-	}
-}
-if(!(file.exists("summarySCC_PM25.rds") && 
-	file.exists("Source_Classification_Code.rds"))) { unzip(archiveFile) }
-```
-
-We now load the NEI and SCC data frames from the .rds files.
-
-```{r data, cache=TRUE}
-NEI <- readRDS("summarySCC_PM25.rds")
-SCC <- readRDS("Source_Classification_Code.rds")
-```
-
 ## Questions
 
 You must address the following questions and tasks in your exploratory analysis. For each question/task you will need to make a single plot. Unless specified, you can use any plotting system in R to make your plot.
@@ -91,12 +67,3 @@ You must address the following questions and tasks in your exploratory analysis.
 * Across the United States, how have emissions from coal combustion-related sources changed from 1999–2008?
 * How have emissions from motor vehicle sources changed from 1999–2008 in Baltimore City?
 * Compare emissions from motor vehicle sources in Baltimore City with emissions from motor vehicle sources in Los Angeles County, California (\color{red}{\verb|fips == "06037"|}fips == "06037"). Which city has seen greater changes over time in motor vehicle emissions?
-
-## Making and Submitting Plots
-
-For each plot you should
-
-* Construct the plot and save it to a PNG file.
-* Create a separate R code file (\color{red}{\verb|plot1.R|}plot1.R, \color{red}{\verb|plot2.R|}plot2.R, etc.) that constructs the corresponding plot, i.e. code in plot1.R constructs the plot1.png plot. Your code file should include code for reading the data so that the plot can be fully reproduced. You must also include the code that creates the PNG file. Only include the code for a single plot (i.e. \color{red}{\verb|plot1.R|}plot1.R should only include code for producing \color{red}{\verb|plot1.png|}plot1.png)
-* Upload the PNG file on the Assignment submission page
-* Copy and paste the R code from the corresponding R file into the text box at the appropriate point in the peer assessment.
